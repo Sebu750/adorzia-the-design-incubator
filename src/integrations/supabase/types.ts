@@ -14,7 +14,286 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      collections: {
+        Row: {
+          cover_url: string | null
+          created_at: string
+          description: string | null
+          designer_id: string
+          display_order: number
+          id: string
+          title: string
+          updated_at: string
+          year: number | null
+        }
+        Insert: {
+          cover_url?: string | null
+          created_at?: string
+          description?: string | null
+          designer_id: string
+          display_order?: number
+          id?: string
+          title: string
+          updated_at?: string
+          year?: number | null
+        }
+        Update: {
+          cover_url?: string | null
+          created_at?: string
+          description?: string | null
+          designer_id?: string
+          display_order?: number
+          id?: string
+          title?: string
+          updated_at?: string
+          year?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "collections_designer_id_fkey"
+            columns: ["designer_id"]
+            isOneToOne: false
+            referencedRelation: "designers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      contact_inquiries: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          message: string
+          name: string
+          resolved: boolean
+          subject: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          message: string
+          name: string
+          resolved?: boolean
+          subject?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string
+          name?: string
+          resolved?: boolean
+          subject?: string | null
+        }
+        Relationships: []
+      }
+      designers: {
+        Row: {
+          bio: string | null
+          cover_url: string | null
+          created_at: string
+          display_order: number
+          featured: boolean
+          id: string
+          instagram: string | null
+          location: string | null
+          name: string
+          portrait_url: string | null
+          published: boolean
+          slug: string
+          tagline: string | null
+          updated_at: string
+          website: string | null
+        }
+        Insert: {
+          bio?: string | null
+          cover_url?: string | null
+          created_at?: string
+          display_order?: number
+          featured?: boolean
+          id?: string
+          instagram?: string | null
+          location?: string | null
+          name: string
+          portrait_url?: string | null
+          published?: boolean
+          slug: string
+          tagline?: string | null
+          updated_at?: string
+          website?: string | null
+        }
+        Update: {
+          bio?: string | null
+          cover_url?: string | null
+          created_at?: string
+          display_order?: number
+          featured?: boolean
+          id?: string
+          instagram?: string | null
+          location?: string | null
+          name?: string
+          portrait_url?: string | null
+          published?: boolean
+          slug?: string
+          tagline?: string | null
+          updated_at?: string
+          website?: string | null
+        }
+        Relationships: []
+      }
+      partner_inquiries: {
+        Row: {
+          company: string
+          contact_name: string
+          created_at: string
+          email: string
+          id: string
+          interest_type: string | null
+          message: string
+          phone: string | null
+          resolved: boolean
+        }
+        Insert: {
+          company: string
+          contact_name: string
+          created_at?: string
+          email: string
+          id?: string
+          interest_type?: string | null
+          message: string
+          phone?: string | null
+          resolved?: boolean
+        }
+        Update: {
+          company?: string
+          contact_name?: string
+          created_at?: string
+          email?: string
+          id?: string
+          interest_type?: string | null
+          message?: string
+          phone?: string | null
+          resolved?: boolean
+        }
+        Relationships: []
+      }
+      products: {
+        Row: {
+          collection_id: string
+          created_at: string
+          description: string | null
+          display_order: number
+          id: string
+          images: string[]
+          name: string
+          price_display: string | null
+          updated_at: string
+        }
+        Insert: {
+          collection_id: string
+          created_at?: string
+          description?: string | null
+          display_order?: number
+          id?: string
+          images?: string[]
+          name: string
+          price_display?: string | null
+          updated_at?: string
+        }
+        Update: {
+          collection_id?: string
+          created_at?: string
+          description?: string | null
+          display_order?: number
+          id?: string
+          images?: string[]
+          name?: string
+          price_display?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "products_collection_id_fkey"
+            columns: ["collection_id"]
+            isOneToOne: false
+            referencedRelation: "collections"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      site_settings: {
+        Row: {
+          hero_eyebrow: string | null
+          hero_subtitle: string | null
+          hero_title: string | null
+          id: number
+          spotlight_open: boolean
+          updated_at: string
+        }
+        Insert: {
+          hero_eyebrow?: string | null
+          hero_subtitle?: string | null
+          hero_title?: string | null
+          id?: number
+          spotlight_open?: boolean
+          updated_at?: string
+        }
+        Update: {
+          hero_eyebrow?: string | null
+          hero_subtitle?: string | null
+          hero_title?: string | null
+          id?: number
+          spotlight_open?: boolean
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      spotlight_applications: {
+        Row: {
+          brand_name: string | null
+          concept_statement: string
+          created_at: string
+          email: string
+          id: string
+          instagram: string | null
+          location: string | null
+          lookbook_urls: string[]
+          name: string
+          phone: string | null
+          portfolio_url: string | null
+          status: string
+        }
+        Insert: {
+          brand_name?: string | null
+          concept_statement: string
+          created_at?: string
+          email: string
+          id?: string
+          instagram?: string | null
+          location?: string | null
+          lookbook_urls?: string[]
+          name: string
+          phone?: string | null
+          portfolio_url?: string | null
+          status?: string
+        }
+        Update: {
+          brand_name?: string | null
+          concept_statement?: string
+          created_at?: string
+          email?: string
+          id?: string
+          instagram?: string | null
+          location?: string | null
+          lookbook_urls?: string[]
+          name?: string
+          phone?: string | null
+          portfolio_url?: string | null
+          status?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

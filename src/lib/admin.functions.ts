@@ -97,10 +97,10 @@ export const updateInquiryStatus = createServerFn({ method: "POST" })
         : data.kind === "partner"
           ? "partner_inquiries"
           : "spotlight_applications";
-    const patch: Record<string, unknown> = {};
+    const patch: { resolved?: boolean; status?: string } = {};
     if (typeof data.resolved === "boolean") patch.resolved = data.resolved;
     if (data.status) patch.status = data.status;
-    const { error } = await context.supabase.from(table).update(patch).eq("id", data.id);
+    const { error } = await context.supabase.from(table).update(patch as never).eq("id", data.id);
     if (error) throw new Error(error.message);
     return { ok: true };
   });

@@ -5,8 +5,15 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { SiteLayout, Container, Section, Eyebrow } from "@/components/site/SiteLayout";
 import { PageHero } from "@/components/site/PageHero";
+import { Timeline } from "@/components/site/Timeline";
+import { TeamGrid } from "@/components/site/TeamGrid";
+import { Testimonials } from "@/components/site/Testimonials";
+import { PartnerLogos } from "@/components/site/PartnerLogos";
 import { submitSpotlightApplication } from "@/lib/inquiries.functions";
 import spotlight from "@/assets/spotlight.jpg";
+import d1 from "@/assets/designer-1.jpg";
+import d2 from "@/assets/designer-2.jpg";
+import d3 from "@/assets/designer-3.jpg";
 
 export const Route = createFileRoute("/spotlight")({
   head: () => ({

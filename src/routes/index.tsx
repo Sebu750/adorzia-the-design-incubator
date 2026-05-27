@@ -1,6 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { SiteLayout, Container, Section, Eyebrow } from "@/components/site/SiteLayout";
+import { Testimonials } from "@/components/site/Testimonials";
+import { PartnerLogos } from "@/components/site/PartnerLogos";
+import { Timeline } from "@/components/site/Timeline";
 import {
   getSiteSettings,
   listFeaturedDesigners,

@@ -74,26 +74,59 @@ function Spotlight() {
 
       <Section className="border-b border-hairline">
         <Container>
-          <div className="grid md:grid-cols-12 gap-10">
-            <div className="md:col-span-4"><Eyebrow>Timeline</Eyebrow></div>
-            <div className="md:col-span-8">
-              <ol className="space-y-8">
-                {[
-                  ["Applications open", "Now — March 31"],
-                  ["Jury review", "April"],
-                  ["Shortlist announced", "Early May"],
-                  ["Runway showcase + winners", "June, Adorzia Studio"],
-                ].map(([t, d]) => (
-                  <li key={t} className="grid grid-cols-12 items-baseline gap-6 border-b border-hairline pb-6">
-                    <div className="col-span-7 font-display text-2xl">{t}</div>
-                    <div className="col-span-5 text-right eyebrow">{d}</div>
-                  </li>
-                ))}
-              </ol>
-            </div>
-          </div>
+          <Timeline
+            eyebrow="Spotlight 2026 timeline"
+            title="From open call to the runway."
+            items={[
+              { period: "Jan — Mar 31", title: "Applications open", body: "Submit your collection, concept statement, and lookbook. No fee to apply." },
+              { period: "April", title: "Jury review", body: "Our jury of designers, editors, and investors reviews every submission in full." },
+              { period: "Early May", title: "Shortlist announced", body: "Twelve finalists are invited to present their collection in person at the Adorzia studio." },
+              { period: "Late May", title: "Studio residency week", body: "Finalists work alongside our team to finish samples, lookbook, and a runway-ready presentation." },
+              { period: "June", title: "Runway showcase & winners", body: "Public showcase at the Adorzia studio. Winners receive prizes, investment intros, and marketplace placement." },
+              { period: "July onward", title: "12 months of support", body: "Winners begin a year of free studio access, curation, and ongoing introductions." },
+            ]}
+          />
         </Container>
       </Section>
+
+      {/* Jury */}
+      <Section className="border-b border-hairline bg-bone">
+        <Container>
+          <TeamGrid
+            eyebrow="The 2026 jury"
+            title="Reviewed by people who have built houses."
+            columns={3}
+            members={[
+              { name: "Hiroshi Tanabe", role: "Couturier, Tokyo", image: d2, bio: "Founder of Maison Tanabe, one of Tokyo's most quietly influential couture houses." },
+              { name: "Catherine Vey", role: "Editor-in-Chief, Vey Quarterly", image: d3, bio: "Three decades shaping the editorial conversation in independent fashion." },
+              { name: "Olu Adebayo", role: "Venture Partner", image: d1, bio: "Backs emerging fashion brands across West Africa and Europe." },
+            ]}
+          />
+        </Container>
+      </Section>
+
+      {/* Past winners testimonials */}
+      <Section className="border-b border-hairline">
+        <Container>
+          <Testimonials
+            eyebrow="Past Spotlight winners"
+            title="A year later, in their own words."
+            items={[
+              { quote: "Spotlight didn't just give me a prize — it gave me a year of room to make work without panic. That changed everything.", name: "Adaeze N.", role: "Spotlight 2024 — Grand Prize" },
+              { quote: "The introductions Adorzia made put my brand in front of buyers I had been writing to for two years.", name: "Felix Brandt", role: "Spotlight 2024 — Investment Prize" },
+              { quote: "The Adorzia jury actually reads. The notes I received were the most useful critique of my career.", name: "Mira Hassan", role: "Spotlight 2023 — Finalist" },
+            ]}
+          />
+        </Container>
+      </Section>
+
+      <Section className="border-b border-hairline">
+        <Container>
+          <PartnerLogos eyebrow="Spotlight partners" title="Underwritten by partners who believe in the next generation." />
+        </Container>
+      </Section>
+
+
 
       <Section id="apply">
         <Container>

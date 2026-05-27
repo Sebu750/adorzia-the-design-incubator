@@ -5,6 +5,8 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { SiteLayout, Container, Section, Eyebrow } from "@/components/site/SiteLayout";
 import { PageHero } from "@/components/site/PageHero";
+import { PartnerLogos } from "@/components/site/PartnerLogos";
+import { Testimonials } from "@/components/site/Testimonials";
 import { submitPartnerInquiry } from "@/lib/inquiries.functions";
 import spotlight from "@/assets/spotlight.jpg";
 
@@ -65,6 +67,28 @@ function ForPartners() {
               </div>
             ))}
           </div>
+        </Container>
+      </Section>
+
+      {/* Partner logos */}
+      <Section className="border-b border-hairline bg-bone">
+        <Container>
+          <PartnerLogos eyebrow="In good company" title="A roster of partners shaping the next decade of fashion." />
+        </Container>
+      </Section>
+
+      {/* Partner testimonials */}
+      <Section className="border-b border-hairline">
+        <Container>
+          <Testimonials
+            eyebrow="Partner voices"
+            title="Why brands and investors choose Adorzia."
+            items={[
+              { quote: "Sponsoring Spotlight gave our brand direct, credible access to a generation of designers we want to be in conversation with.", name: "Renée Albright", role: "VP Marketing, Maison Verre" },
+              { quote: "Adorzia's curation is sharper than any open call I've sat on. Every shortlist has been worth my time.", name: "Olu Adebayo", role: "Venture Partner" },
+              { quote: "The capsule we commissioned through Adorzia outsold our in-house collaborations two-to-one.", name: "Daniel Chen", role: "Head of Collaborations, House Lumen" },
+            ]}
+          />
         </Container>
       </Section>
 

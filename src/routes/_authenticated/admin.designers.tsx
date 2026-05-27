@@ -60,7 +60,7 @@ function DesignersPage() {
               </div>
             </div>
             <div className="flex gap-3">
-              <button onClick={() => setEditing({ ...empty, ...row })} className="eyebrow border-b border-ink pb-0.5">Edit</button>
+              <button onClick={() => setEditing({ ...empty, ...row, tagline: row.tagline ?? "", bio: row.bio ?? "", portrait_url: row.portrait_url ?? "", cover_url: row.cover_url ?? "", instagram: row.instagram ?? "", website: row.website ?? "", location: row.location ?? "" })} className="eyebrow border-b border-ink pb-0.5">Edit</button>
               <button onClick={() => { if (confirm(`Delete ${row.name}?`)) d.mutate(row.id); }} className="eyebrow border-b border-destructive text-destructive pb-0.5">Delete</button>
             </div>
           </div>

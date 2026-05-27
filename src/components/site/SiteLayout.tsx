@@ -27,11 +27,13 @@ export function Container({
 export function Section({
   children,
   className = "",
+  id,
 }: {
   children: ReactNode;
   className?: string;
+  id?: string;
 }) {
-  return <section className={`py-20 md:py-32 ${className}`}>{children}</section>;
+  return <section id={id} className={`py-20 md:py-32 ${className}`}>{children}</section>;
 }
 
 export function Eyebrow({ children }: { children: ReactNode }) {

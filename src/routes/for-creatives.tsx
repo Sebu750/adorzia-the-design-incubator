@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout, Container, Section, Eyebrow } from "@/components/site/SiteLayout";
 import { PageHero } from "@/components/site/PageHero";
+import { Testimonials } from "@/components/site/Testimonials";
+import { PartnerLogos } from "@/components/site/PartnerLogos";
 import studio from "@/assets/studio.jpg";
 
 export const Route = createFileRoute("/for-creatives")({
@@ -76,6 +78,26 @@ function ForCreatives() {
               </div>
             ))}
           </div>
+        </Container>
+      </Section>
+
+      <Section className="border-b border-hairline bg-bone">
+        <Container>
+          <Testimonials
+            eyebrow="From our designers"
+            title="Built by makers, for makers."
+            items={[
+              { quote: "I joined as a graduate with one capsule. A year later I had a stocked marketplace profile and three real wholesale accounts.", name: "Adaeze N.", role: "Resident designer" },
+              { quote: "The studio runs like a small couture house. I learned more in six months here than in three years freelancing.", name: "Felix Brandt", role: "Resident designer" },
+              { quote: "Adorzia treats designers like founders, not interns. The difference is everywhere.", name: "Mira Hassan", role: "Marketplace designer" },
+            ]}
+          />
+        </Container>
+      </Section>
+
+      <Section>
+        <Container>
+          <PartnerLogos eyebrow="Stockists & press" title="Where our designers have been seen." />
         </Container>
       </Section>
     </SiteLayout>

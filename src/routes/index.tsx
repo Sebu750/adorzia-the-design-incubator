@@ -1,6 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { SiteLayout, Container, Section, Eyebrow } from "@/components/site/SiteLayout";
+import { Testimonials } from "@/components/site/Testimonials";
+import { PartnerLogos } from "@/components/site/PartnerLogos";
+import { Timeline } from "@/components/site/Timeline";
 import {
   getSiteSettings,
   listFeaturedDesigners,
@@ -186,6 +189,44 @@ function Home() {
               <img src={spotlight} alt="" loading="lazy" className="w-full aspect-[4/5] object-cover" />
             </div>
           </div>
+        </Container>
+      </Section>
+
+      {/* Projection / roadmap */}
+      <Section className="border-t border-hairline">
+        <Container>
+          <Timeline
+            eyebrow="The road ahead"
+            title="A house being built season by season."
+            items={[
+              { period: "2024", title: "Studio opens", body: "Our flagship atelier launches with sixteen founding members and a full fabric library." },
+              { period: "2025", title: "Marketplace goes live", body: "Twenty-four curated designers, six editorial collections, and our first international press cycle." },
+              { period: "2026", title: "Spotlight, globally", body: "Open call expanded to every continent, with €25,000 in cash prizes and an investor day." },
+              { period: "2027", title: "Second studio", body: "A second Adorzia studio opens, plus retail residencies in three flagship cities." },
+              { period: "2028", title: "Adorzia Capital", body: "A dedicated emerging-fashion fund formalises the investment introductions made through Spotlight." },
+            ]}
+          />
+        </Container>
+      </Section>
+
+      {/* Testimonials */}
+      <Section className="border-t border-hairline bg-bone">
+        <Container>
+          <Testimonials
+            title="Trusted by designers, partners, and press."
+            items={[
+              { quote: "Adorzia is what a fashion incubator should always have been — equal parts atelier, gallery, and operator.", name: "Catherine Vey", role: "Editor-in-Chief, Vey Quarterly" },
+              { quote: "The most discerning curation of emerging talent we have seen in years.", name: "Mara Eliasson", role: "Retail Strategist, Stockholm" },
+              { quote: "A year in the Adorzia studio is worth a decade of figuring it out alone.", name: "Tomás Vinheiro", role: "Marketplace designer" },
+            ]}
+          />
+        </Container>
+      </Section>
+
+      {/* Partners */}
+      <Section className="border-t border-hairline">
+        <Container>
+          <PartnerLogos />
         </Container>
       </Section>
     </SiteLayout>

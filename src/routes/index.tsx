@@ -780,8 +780,36 @@ function Home() {
             <h4 className="font-display text-sm text-neutral-950 font-medium tracking-wide uppercase">{prize.title}</h4>
             <p className="mt-1.5 text-xs text-neutral-500 leading-relaxed font-light">{prize.desc}</p>
           </div>
-        </Container>
-      </Section>
+        ))}
+      </div>
+
+    </div>
+  </Container>
+</section>
+
+     {/* Section 8: Studio Facilities Showcase - START */}
+<Section className="border-b border-white/10 bg-[#0b0b0b]">
+  <Container>
+    
+    <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+      <div className="max-w-xl">
+        <div className="text-[#bb9457]">
+          <Eyebrow>Industrial Infrastructure</Eyebrow>
+        </div>
+
+        <h2 className="font-display text-4xl md:text-5xl mt-2 text-white">
+          Studio Facilities Showcase
+        </h2>
+
+        <p className="text-white/60 mt-4 leading-relaxed">
+          A fully equipped ecosystem built for design, prototyping, and production — where ideas move from sketch to runway.
+        </p>
+      </div>
+    </div>
+
+  </Container>
+</Section>
+{/* Section 8: Studio Facilities Showcase - END */}
 
       {/* Projection / roadmap */}
       <Section className="border-t border-hairline">

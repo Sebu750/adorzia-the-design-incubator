@@ -9,7 +9,6 @@ import {
   getSiteSettings,
   listFeaturedDesigners,
 } from "@/lib/public-data.functions";
-import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import heroHome from "@/assets/hero-banner-coworking-studio 1 .png";
 import studio from "@/assets/hero-banner-coworking-studio-2.png";
 import spotlight from "@/assets/fashion-icon.png";
@@ -72,17 +71,6 @@ function Home() {
   const settings = useSuspenseQuery(settingsQO).data;
   const featured = useSuspenseQuery(featuredQO).data;
   const designers = featured.length ? featured : FALLBACK_DESIGNERS;
-
-  // Scroll animation hooks for each section
-  const manifestoAnim = useScrollAnimation({ threshold: 0.2 });
-  const philosophyAnim = useScrollAnimation({ threshold: 0.2 });
-  const pillarsAnim = useScrollAnimation({ threshold: 0.15 });
-  const pipelineAnim = useScrollAnimation({ threshold: 0.1 });
-  const quoteAnim = useScrollAnimation({ threshold: 0.3 });
-  const successAnim = useScrollAnimation({ threshold: 0.15 });
-  const disciplinesAnim = useScrollAnimation({ threshold: 0.15 });
-  const prizeAnim = useScrollAnimation({ threshold: 0.15 });
-  const facilitiesAnim = useScrollAnimation({ threshold: 0.2 });
 
   // Hero carousel state with completely dedicated copy variants per slide
   const slides = [
@@ -370,25 +358,25 @@ function Home() {
       </section>
 
      {/* ========================= Start Section 10: Why Adorzia Exists ========================= */}
-<section ref={manifestoAnim.ref} className="bg-white text-black py-36 relative overflow-hidden border-b border-black/5">
+<section className="bg-white text-black py-36 relative overflow-hidden border-b border-black/5">
   <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.04),transparent_70%)] pointer-events-none" />
   
   <Container className="text-center max-w-5xl mx-auto relative z-10">
-    <div className={`text-[#6b7280] tracking-[0.4em] mb-8 scroll-animate ${manifestoAnim.isInView ? 'animate-fade-in-up in-view' : ''}`}>
+    <div className="text-[#6b7280] tracking-[0.4em] mb-8">
       <Eyebrow>Our Manifesto</Eyebrow>
     </div>
 
-    <h2 className={`font-display text-4xl md:text-6xl lg:text-7xl font-extralight tracking-tight leading-[1.15] text-black scroll-animate ${manifestoAnim.isInView ? 'animate-scale-in stagger-2 in-view' : ''}`}>
-      "The world doesn't need{" "}
+    <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-extralight tracking-tight leading-[1.15] text-black">
+      “The world doesn’t need{" "}
       <span className="italic font-serif font-normal text-[#432818]">
         more brands
       </span>.
       <br />
       It needs original{" "}
-      <span className="font-normal">fashion houses</span>."
+      <span className="font-normal">fashion houses</span>.”
     </h2>
 
-    <div className={`w-24 h-[1px] bg-black/20 mx-auto mt-12 scroll-animate ${manifestoAnim.isInView ? 'animate-fade-in stagger-4 in-view' : ''}`} />
+    <div className="w-24 h-[1px] bg-black/20 mx-auto mt-12" />
   </Container>
 </section>
 {/* ========================== End Section 10: Why Adorzia Exists ========================== */}

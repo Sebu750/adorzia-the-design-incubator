@@ -11,11 +11,16 @@ import craft from "@/assets/craft.jpg";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — Adorzia" },
+      { title: "Contact Adorzia — Get in Touch" },
       { name: "description", content: "Get in touch with the Adorzia team — studio enquiries, marketplace, press, and partnerships." },
+      { name: "keywords", content: "contact adorzia, fashion studio contact, designer inquiries, partnership inquiries" },
       { property: "og:title", content: "Contact — Adorzia" },
       { property: "og:description", content: "Reach out about studio membership, the marketplace, Spotlight, or partnerships." },
       { property: "og:image", content: craft },
+      { property: "og:url", content: "https://adorzia.com/contact" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Contact — Adorzia" },
+      { rel: "canonical", href: "https://adorzia.com/contact" } as never,
     ],
   }),
   component: Contact,
@@ -46,11 +51,11 @@ function Contact() {
             <div className="md:col-span-5 space-y-10">
               <div>
                 <Eyebrow>Studio</Eyebrow>
-                <p className="mt-3 font-display text-2xl">Adorzia Atelier<br/>14 Rue des Métiers<br/>75011 Paris, France</p>
+                <p className="mt-3 font-display text-2xl">Adorzia Atelier<br/>Clayton Quareter<br/>Karachi, Pakistan</p>
               </div>
               <div>
                 <Eyebrow>Email</Eyebrow>
-                <p className="mt-3 text-lg"><a href="mailto:studio@adorzia.com" className="border-b border-ink hover:text-gold hover:border-gold">studio@adorzia.com</a></p>
+                <p className="mt-3 text-lg"><a href="mailto:sayhi@adorzia.com" className="border-b border-ink hover:text-gold hover:border-gold">sayhi@adorzia.com</a></p>
               </div>
               <div>
                 <Eyebrow>Hours</Eyebrow>

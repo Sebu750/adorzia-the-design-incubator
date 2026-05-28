@@ -1,6 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
+import { sendSpotlightStatusEmail } from "./email.server";
 
 const designerSchema = z.object({
   id: z.string().uuid().optional(),
@@ -97,11 +98,41 @@ export const updateInquiryStatus = createServerFn({ method: "POST" })
         : data.kind === "partner"
           ? "partner_inquiries"
           : "spotlight_applications";
+    
+    // For spotlight applications, fetch applicant details before updating
+    let applicantEmail: string | null = null;
+    let applicantName: string | null = null;
+    const previousStatus: string | null = null;
+    
+    if (data.kind === "spotlight" && data.status) {
+      const { data: applicant } = await context.supabase
+        .from("spotlight_applications")
+        .select("email, name, status")
+        .eq("id", data.id)
+        .single();
+      
+      if (applicant) {
+        applicantEmail = applicant.email;
+        applicantName = applicant.name;
+      }
+    }
+    
     const patch: { resolved?: boolean; status?: string } = {};
     if (typeof data.resolved === "boolean") patch.resolved = data.resolved;
     if (data.status) patch.status = data.status;
+    
     const { error } = await context.supabase.from(table).update(patch as never).eq("id", data.id);
     if (error) throw new Error(error.message);
+    
+    // Send status change email for spotlight applications
+    if (data.kind === "spotlight" && data.status && applicantEmail && applicantName) {
+      await sendSpotlightStatusEmail({
+        to: applicantEmail,
+        name: applicantName,
+        status: data.status,
+      });
+    }
+    
     return { ok: true };
   });
 
@@ -124,4 +155,22 @@ export const updateSiteSettings = createServerFn({ method: "POST" })
       .eq("id", 1);
     if (error) throw new Error(error.message);
     return { ok: true };
+  });
+
+export const getDashboardCounts = createServerFn({ method: "GET" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }) => {
+    const [designers, spotlight, contact, partner] = await Promise.all([
+      context.supabase.from("designers").select("*", { count: "exact", head: true }),
+      context.supabase.from("spotlight_applications").select("*", { count: "exact", head: true }),
+      context.supabase.from("contact_inquiries").select("*", { count: "exact", head: true }),
+      context.supabase.from("partner_inquiries").select("*", { count: "exact", head: true }),
+    ]);
+
+    return {
+      designers: designers.count ?? 0,
+      spotlight: spotlight.count ?? 0,
+      contact: contact.count ?? 0,
+      partner: partner.count ?? 0,
+    };
   });

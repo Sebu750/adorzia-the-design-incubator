@@ -65,6 +65,9 @@ export function InquiriesList({ kind, title }: { kind: Kind; title: string }) {
                       <div><span className="eyebrow">Instagram</span><div>{row.instagram as string || "—"}</div></div>
                       <div><span className="eyebrow">Portfolio</span><div className="truncate">{(row.portfolio_url as string) ? <a className="underline" target="_blank" rel="noreferrer" href={row.portfolio_url as string}>{row.portfolio_url as string}</a> : "—"}</div></div>
                     </div>
+                    {(row.collection_pdf_url as string) && (
+                      <div><span className="eyebrow">Collection PDF</span><div><a className="underline text-gold" target="_blank" rel="noreferrer" href={row.collection_pdf_url as string}>View PDF ↗</a></div></div>
+                    )}
                     <div><span className="eyebrow">Concept</span><div className="whitespace-pre-wrap mt-1">{row.concept_statement as string}</div></div>
                     <div className="flex gap-2 pt-2">
                       {["new", "shortlisted", "winner", "rejected"].map((s) => (

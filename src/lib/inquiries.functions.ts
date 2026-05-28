@@ -69,6 +69,7 @@ const spotlightSchema = z.object({
   portfolio_url: z.string().trim().max(500).optional().default(""),
   concept_statement: z.string().trim().min(50).max(5000),
   lookbook_urls: z.array(z.string().url()).max(15).optional().default([]),
+  collection_pdf_url: z.string().trim().max(500).optional().default(""),
 });
 
 export const submitSpotlightApplication = createServerFn({ method: "POST" })
@@ -84,13 +85,19 @@ export const submitSpotlightApplication = createServerFn({ method: "POST" })
       portfolio_url: data.portfolio_url || null,
       concept_statement: data.concept_statement,
       lookbook_urls: data.lookbook_urls,
+      collection_pdf_url: data.collection_pdf_url || null,
     });
     if (error) throw new Error(error.message);
     await sendInquiryEmails({
       kind: "spotlight",
       to: data.email,
       name: data.name,
-      summary: `Brand: ${data.brand_name || "—"}\nLocation: ${data.location || "—"}\nInstagram: ${data.instagram || "—"}\nPortfolio: ${data.portfolio_url || "—"}\n\n${data.concept_statement}`,
+      summary: `Brand: ${data.brand_name || "—"}
+Location: ${data.location || "—"}
+Instagram: ${data.instagram || "—"}
+Portfolio: ${data.portfolio_url || "—"}
+
+${data.concept_statement}`,
     });
     return { ok: true };
   });
